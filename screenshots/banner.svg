@@ -1,0 +1,75 @@
+<svg viewBox="0 0 900 200" xmlns="http://www.w3.org/2000/svg" font-family="'Courier New', monospace">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#050a14"/>
+      <stop offset="100%" stop-color="#0a1228"/>
+    </linearGradient>
+    <linearGradient id="glow" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#00ff9d" stop-opacity="0"/>
+      <stop offset="30%" stop-color="#00ff9d" stop-opacity="0.15"/>
+      <stop offset="50%" stop-color="#00d4ff" stop-opacity="0.2"/>
+      <stop offset="70%" stop-color="#7c3aed" stop-opacity="0.15"/>
+      <stop offset="100%" stop-color="#7c3aed" stop-opacity="0"/>
+    </linearGradient>
+    <filter id="blur">
+      <feGaussianBlur stdDeviation="8"/>
+    </filter>
+  </defs>
+
+  <rect width="900" height="200" fill="url(#bg)"/>
+
+  <!-- Glow blob -->
+  <ellipse cx="450" cy="100" rx="350" ry="80" fill="url(#glow)" filter="url(#blur)"/>
+
+  <!-- Grid -->
+  <defs>
+    <pattern id="g" width="25" height="25" patternUnits="userSpaceOnUse">
+      <path d="M 25 0 L 0 0 0 25" fill="none" stroke="#0d1630" stroke-width="0.6"/>
+    </pattern>
+  </defs>
+  <rect width="900" height="200" fill="url(#g)"/>
+
+  <!-- Corner accents -->
+  <polyline points="20,20 20,5 35,5" fill="none" stroke="#00ff9d" stroke-width="2"/>
+  <polyline points="880,20 880,5 865,5" fill="none" stroke="#00ff9d" stroke-width="2"/>
+  <polyline points="20,180 20,195 35,195" fill="none" stroke="#00d4ff" stroke-width="2"/>
+  <polyline points="880,180 880,195 865,195" fill="none" stroke="#00d4ff" stroke-width="2"/>
+
+  <!-- Top scan line -->
+  <rect x="0" y="0" width="900" height="1" fill="#00ff9d" opacity="0.5"/>
+  <rect x="0" y="199" width="900" height="1" fill="#00d4ff" opacity="0.5"/>
+
+  <!-- Decorative circles left -->
+  <circle cx="80" cy="100" r="40" fill="none" stroke="#00ff9d" stroke-width="0.5" opacity="0.3"/>
+  <circle cx="80" cy="100" r="28" fill="none" stroke="#00ff9d" stroke-width="0.5" opacity="0.2"/>
+  <text x="80" y="105" fill="#00ff9d" font-size="18" text-anchor="middle" opacity="0.6">◈</text>
+
+  <!-- Decorative circles right -->
+  <circle cx="820" cy="100" r="40" fill="none" stroke="#00d4ff" stroke-width="0.5" opacity="0.3"/>
+  <circle cx="820" cy="100" r="28" fill="none" stroke="#00d4ff" stroke-width="0.5" opacity="0.2"/>
+  <text x="820" y="105" fill="#00d4ff" font-size="18" text-anchor="middle" opacity="0.6">◈</text>
+
+  <!-- Main title -->
+  <text x="450" y="80" fill="#ffffff" font-size="48" font-weight="bold" text-anchor="middle" letter-spacing="10" opacity="0.05">RECONRADAR</text>
+  <text x="450" y="82" fill="url(#glow)" font-size="48" font-weight="bold" text-anchor="middle" letter-spacing="10">RECONRADAR</text>
+  <text x="452" y="80" fill="#00ff9d" font-size="48" font-weight="bold" text-anchor="middle" letter-spacing="10">RECONRADAR</text>
+
+  <!-- Subtitle -->
+  <text x="450" y="112" fill="#00d4ff" font-size="16" text-anchor="middle" letter-spacing="8">A P O L L O  v 6 . 0</text>
+
+  <!-- Tag line -->
+  <text x="450" y="140" fill="#4a5568" font-size="12" text-anchor="middle" letter-spacing="2">PASSIVE &amp; ACTIVE RECON  //  DNS  //  OSINT  //  VULN SCANNING</text>
+
+  <!-- Bottom badges -->
+  <rect x="260" y="158" width="90" height="22" rx="11" fill="#003d1f" stroke="#00ff9d" stroke-width="1"/>
+  <text x="305" y="173" fill="#00ff9d" font-size="10" text-anchor="middle">Python 3.8+</text>
+
+  <rect x="365" y="158" width="90" height="22" rx="11" fill="#00162b" stroke="#00d4ff" stroke-width="1"/>
+  <text x="410" y="173" fill="#00d4ff" font-size="10" text-anchor="middle">FastAPI</text>
+
+  <rect x="470" y="158" width="90" height="22" rx="11" fill="#1a0040" stroke="#a855f7" stroke-width="1"/>
+  <text x="515" y="173" fill="#a855f7" font-size="10" text-anchor="middle">WebSocket</text>
+
+  <rect x="575" y="158" width="90" height="22" rx="11" fill="#1a0000" stroke="#ef4444" stroke-width="1"/>
+  <text x="620" y="173" fill="#ef4444" font-size="10" text-anchor="middle">MIT License</text>
+</svg>

@@ -1,0 +1,208 @@
+<svg viewBox="0 0 1200 750" xmlns="http://www.w3.org/2000/svg" font-family="'Courier New', monospace">
+  <!-- Background -->
+  <rect width="1200" height="750" fill="#0a0e1a"/>
+  <!-- Grid lines -->
+  <defs>
+    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#1a2040" stroke-width="0.5"/>
+    </pattern>
+    <linearGradient id="headerGrad" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#00ff9d" stop-opacity="0.15"/>
+      <stop offset="50%" stop-color="#00d4ff" stop-opacity="0.1"/>
+      <stop offset="100%" stop-color="#7c3aed" stop-opacity="0.15"/>
+    </linearGradient>
+    <linearGradient id="barGrad" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#00ff9d"/>
+      <stop offset="100%" stop-color="#00d4ff"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="750" fill="url(#grid)"/>
+
+  <!-- Header bar -->
+  <rect width="1200" height="60" fill="url(#headerGrad)"/>
+  <rect width="1200" height="1" y="60" fill="#00ff9d" opacity="0.4"/>
+
+  <!-- Logo / Title -->
+  <text x="30" y="22" fill="#00ff9d" font-size="11" font-family="'Courier New', monospace" opacity="0.7">◈ RECONRADAR</text>
+  <text x="30" y="44" fill="#00ff9d" font-size="20" font-weight="bold" letter-spacing="4">APOLLO v6.0</text>
+  <text x="200" y="44" fill="#00d4ff" font-size="11" opacity="0.6">// Intelligence Platform</text>
+
+  <!-- Status indicators -->
+  <circle cx="900" cy="30" r="5" fill="#00ff9d">
+    <animate attributeName="opacity" values="1;0.3;1" dur="2s" repeatCount="indefinite"/>
+  </circle>
+  <text x="912" cy="35" y="35" fill="#00ff9d" font-size="11">ONLINE</text>
+  <text x="980" y="35" fill="#4a5568" font-size="11">|</text>
+  <text x="995" y="35" fill="#718096" font-size="11">WS: ACTIVE</text>
+  <text x="1090" y="35" fill="#4a5568" font-size="11">|</text>
+  <text x="1105" y="35" fill="#718096" font-size="11">v6.0</text>
+
+  <!-- Target input area -->
+  <rect x="30" y="80" width="700" height="50" rx="4" fill="#0d1422" stroke="#1e3a5f" stroke-width="1"/>
+  <text x="50" y="100" fill="#4a5568" font-size="10">TARGET</text>
+  <text x="50" y="118" fill="#00d4ff" font-size="14">deepseek.com</text>
+  <rect x="750" y="80" width="120" height="50" rx="4" fill="#003d1f" stroke="#00ff9d" stroke-width="1"/>
+  <text x="810" y="111" fill="#00ff9d" font-size="13" text-anchor="middle" font-weight="bold">⚡ SCAN</text>
+
+  <!-- Stats cards row -->
+  <!-- DNS -->
+  <rect x="30" y="150" width="160" height="90" rx="6" fill="#0d1422" stroke="#1e3a5f" stroke-width="1"/>
+  <rect x="30" y="150" width="160" height="3" rx="2" fill="#00ff9d"/>
+  <text x="110" y="200" fill="#00ff9d" font-size="32" font-weight="bold" text-anchor="middle">28</text>
+  <text x="110" y="225" fill="#718096" font-size="11" text-anchor="middle">DNS RECORDS</text>
+
+  <!-- Subdomains -->
+  <rect x="205" y="150" width="160" height="90" rx="6" fill="#0d1422" stroke="#1e3a5f" stroke-width="1"/>
+  <rect x="205" y="150" width="160" height="3" rx="2" fill="#00d4ff"/>
+  <text x="285" y="200" fill="#00d4ff" font-size="32" font-weight="bold" text-anchor="middle">57</text>
+  <text x="285" y="225" fill="#718096" font-size="11" text-anchor="middle">SUBDOMAINS</text>
+
+  <!-- Ports -->
+  <rect x="380" y="150" width="160" height="90" rx="6" fill="#0d1422" stroke="#1e3a5f" stroke-width="1"/>
+  <rect x="380" y="150" width="160" height="3" rx="2" fill="#f59e0b"/>
+  <text x="460" y="200" fill="#f59e0b" font-size="32" font-weight="bold" text-anchor="middle">11</text>
+  <text x="460" y="225" fill="#718096" font-size="11" text-anchor="middle">OPEN PORTS</text>
+
+  <!-- Vulns -->
+  <rect x="555" y="150" width="160" height="90" rx="6" fill="#0d1422" stroke="#1e3a5f" stroke-width="1"/>
+  <rect x="555" y="150" width="160" height="3" rx="2" fill="#ef4444"/>
+  <text x="635" y="200" fill="#ef4444" font-size="32" font-weight="bold" text-anchor="middle">7</text>
+  <text x="635" y="225" fill="#718096" font-size="11" text-anchor="middle">VULNERABILITIES</text>
+
+  <!-- OSINT -->
+  <rect x="730" y="150" width="160" height="90" rx="6" fill="#0d1422" stroke="#1e3a5f" stroke-width="1"/>
+  <rect x="730" y="150" width="160" height="3" rx="2" fill="#a855f7"/>
+  <text x="810" y="200" fill="#a855f7" font-size="32" font-weight="bold" text-anchor="middle">115</text>
+  <text x="810" y="225" fill="#718096" font-size="11" text-anchor="middle">OSINT LINKS</text>
+
+  <!-- Web Svc -->
+  <rect x="905" y="150" width="265" height="90" rx="6" fill="#0d1422" stroke="#1e3a5f" stroke-width="1"/>
+  <rect x="905" y="150" width="265" height="3" rx="2" fill="#10b981"/>
+  <text x="1037" y="200" fill="#10b981" font-size="32" font-weight="bold" text-anchor="middle">1</text>
+  <text x="1037" y="225" fill="#718096" font-size="11" text-anchor="middle">WEB SERVICES</text>
+
+  <!-- Left panel: DNS Results -->
+  <rect x="30" y="260" width="560" height="440" rx="6" fill="#0d1422" stroke="#1e3a5f" stroke-width="1"/>
+  <rect x="30" y="260" width="560" height="36" rx="6" fill="#111827"/>
+  <text x="50" y="284" fill="#00ff9d" font-size="12" font-weight="bold">⬡ DNS RECORDS</text>
+  <text x="540" y="284" fill="#4a5568" font-size="10" text-anchor="end">28 found</text>
+
+  <!-- DNS Table header -->
+  <rect x="30" y="296" width="560" height="22" fill="#0a0e1a"/>
+  <text x="50" y="311" fill="#4a5568" font-size="10">ASSET</text>
+  <text x="250" y="311" fill="#4a5568" font-size="10">TYPE</text>
+  <text x="380" y="311" fill="#4a5568" font-size="10">DETAILS</text>
+
+  <!-- DNS rows -->
+  <g fill="#718096" font-size="11">
+    <rect x="30" y="318" width="560" height="22" fill="#0d1728" opacity="0.5"/>
+    <text x="50" y="333" fill="#00d4ff">deepseek.com</text>
+    <text x="250" y="333" fill="#f59e0b">A Record</text>
+    <text x="380" y="333" fill="#9ca3af">3.173.21.63</text>
+
+    <text x="50" y="357" fill="#00d4ff">api.deepseek.com</text>
+    <text x="250" y="357" fill="#f59e0b">A Record</text>
+    <text x="380" y="357" fill="#9ca3af">3.173.21.63</text>
+
+    <rect x="30" y="362" width="560" height="22" fill="#0d1728" opacity="0.5"/>
+    <text x="50" y="377" fill="#00d4ff">deepseek.com</text>
+    <text x="250" y="377" fill="#10b981">MX</text>
+    <text x="380" y="377" fill="#9ca3af">hzmx01.mxmail.netease.com</text>
+
+    <text x="50" y="401" fill="#00d4ff">deepseek.com</text>
+    <text x="250" y="401" fill="#10b981">TXT</text>
+    <text x="380" y="401" fill="#9ca3af">v=spf1 include:spf.163.com</text>
+
+    <rect x="30" y="406" width="560" height="22" fill="#0d1728" opacity="0.5"/>
+    <text x="50" y="421" fill="#00d4ff">gitlab.deepseek.com</text>
+    <text x="250" y="421" fill="#f59e0b">A Record</text>
+    <text x="380" y="421" fill="#ef4444">10.2.201.57 ⚠</text>
+
+    <text x="50" y="445" fill="#00d4ff">argocd.deepseek.com</text>
+    <text x="250" y="445" fill="#f59e0b">A Record</text>
+    <text x="380" y="445" fill="#ef4444">172.30.2.240 ⚠</text>
+
+    <rect x="30" y="450" width="560" height="22" fill="#0d1728" opacity="0.5"/>
+    <text x="50" y="465" fill="#00d4ff">confluence.deepseek.com</text>
+    <text x="250" y="465" fill="#f59e0b">A Record</text>
+    <text x="380" y="465" fill="#ef4444">10.2.201.57 ⚠</text>
+
+    <text x="50" y="489" fill="#718096">... and 21 more records</text>
+  </g>
+
+  <!-- Right panel: Vulnerabilities -->
+  <rect x="610" y="260" width="560" height="200" rx="6" fill="#0d1422" stroke="#1e3a5f" stroke-width="1"/>
+  <rect x="610" y="260" width="560" height="36" rx="6" fill="#111827"/>
+  <text x="630" y="284" fill="#ef4444" font-size="12" font-weight="bold">⚠ VULNERABILITIES</text>
+  <text x="1120" y="284" fill="#4a5568" font-size="10" text-anchor="end">7 found</text>
+
+  <!-- Vuln rows -->
+  <rect x="610" y="296" width="560" height="22" fill="#0a0e1a"/>
+  <text x="630" y="311" fill="#4a5568" font-size="10">THREAT</text>
+  <text x="900" y="311" fill="#4a5568" font-size="10">SEVERITY</text>
+
+  <g font-size="11">
+    <rect x="610" y="318" width="560" height="22" fill="#1a0a0a" opacity="0.8"/>
+    <text x="630" y="333" fill="#9ca3af">Missing HSTS</text>
+    <rect x="895" y="321" width="60" height="16" rx="3" fill="#7f1d1d"/>
+    <text x="925" y="333" fill="#ef4444" text-anchor="middle" font-size="10">HIGH</text>
+
+    <text x="630" y="357" fill="#9ca3af">Missing CSP</text>
+    <rect x="895" y="345" width="60" height="16" rx="3" fill="#78350f"/>
+    <text x="925" y="357" fill="#f59e0b" text-anchor="middle" font-size="10">MED</text>
+
+    <rect x="610" y="362" width="560" height="22" fill="#0d1728" opacity="0.5"/>
+    <text x="630" y="377" fill="#9ca3af">Missing X-Frame-Options</text>
+    <rect x="895" y="365" width="60" height="16" rx="3" fill="#78350f"/>
+    <text x="925" y="377" fill="#f59e0b" text-anchor="middle" font-size="10">MED</text>
+
+    <text x="630" y="401" fill="#9ca3af">Server Version Disclosure</text>
+    <rect x="895" y="389" width="60" height="16" rx="3" fill="#1e3a5f"/>
+    <text x="925" y="401" fill="#60a5fa" text-anchor="middle" font-size="10">LOW</text>
+
+    <text x="630" y="425" fill="#718096">... and 3 more</text>
+  </g>
+
+  <!-- Bottom right: Port scan -->
+  <rect x="610" y="475" width="560" height="225" rx="6" fill="#0d1422" stroke="#1e3a5f" stroke-width="1"/>
+  <rect x="610" y="475" width="560" height="36" rx="6" fill="#111827"/>
+  <text x="630" y="499" fill="#f59e0b" font-size="12" font-weight="bold">◎ PORT SCAN</text>
+  <text x="1120" y="499" fill="#4a5568" font-size="10" text-anchor="end">nmap scan</text>
+
+  <rect x="610" y="511" width="560" height="22" fill="#0a0e1a"/>
+  <text x="630" y="526" fill="#4a5568" font-size="10">HOST:PORT</text>
+  <text x="820" y="526" fill="#4a5568" font-size="10">STATE</text>
+  <text x="920" y="526" fill="#4a5568" font-size="10">SERVICE</text>
+
+  <g font-size="11">
+    <rect x="610" y="533" width="560" height="20" fill="#0a1f0a" opacity="0.8"/>
+    <text x="630" y="547" fill="#9ca3af">3.173.21.63:80/tcp</text>
+    <text x="820" y="547" fill="#00ff9d">OPEN</text>
+    <text x="920" y="547" fill="#9ca3af">http</text>
+
+    <text x="630" y="567" fill="#9ca3af">3.173.21.63:443/tcp</text>
+    <text x="820" y="567" fill="#00ff9d">OPEN</text>
+    <text x="920" y="567" fill="#9ca3af">https</text>
+
+    <rect x="610" y="573" width="560" height="20" fill="#0d1728" opacity="0.5"/>
+    <text x="630" y="587" fill="#9ca3af">3.173.21.63:22/tcp</text>
+    <text x="820" y="587" fill="#4a5568">FILTERED</text>
+    <text x="920" y="587" fill="#9ca3af">ssh</text>
+
+    <text x="630" y="607" fill="#9ca3af">3.173.21.63:3306/tcp</text>
+    <text x="820" y="607" fill="#4a5568">FILTERED</text>
+    <text x="920" y="607" fill="#9ca3af">mysql</text>
+
+    <rect x="610" y="613" width="560" height="20" fill="#0d1728" opacity="0.5"/>
+    <text x="630" y="627" fill="#9ca3af">3.173.21.63:6379/tcp</text>
+    <text x="820" y="627" fill="#4a5568">FILTERED</text>
+    <text x="920" y="627" fill="#9ca3af">redis</text>
+
+    <text x="630" y="647" fill="#718096">... and 6 more ports</text>
+  </g>
+
+  <!-- Footer -->
+  <rect x="0" y="720" width="1200" height="30" fill="#060910"/>
+  <text x="30" y="740" fill="#2d3748" font-size="10">ReconRadar APOLLO v6.0  //  github.com/Nexvir  //  For authorized security testing only</text>
+  <text x="1170" y="740" fill="#2d3748" font-size="10" text-anchor="end">2026</text>
+</svg>

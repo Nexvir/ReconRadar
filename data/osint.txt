@@ -1,0 +1,105 @@
+# Format: SourceName | Type | https://url/{target}
+
+# ── Search Engines ──────────────────────────────────────────────
+Google | Search | https://www.google.com/search?q=site:{target}
+Bing | Search | https://www.bing.com/search?q=site:{target}
+DuckDuckGo | Search | https://duckduckgo.com/?q=site:{target}
+Yahoo | Search | https://search.yahoo.com/search?p=site:{target}
+Yandex | Search | https://yandex.com/search/?text=site:{target}
+Baidu | Search | https://www.baidu.com/s?wd=site:{target}
+
+# ── DNS & IP Intelligence ────────────────────────────────────────
+DNSDumpster | DNS | https://dnsdumpster.com/?domain={target}
+ViewDNS | DNS | https://viewdns.info/iphistory/?domain={target}
+SecurityTrails | DNS | https://securitytrails.com/domain/{target}/dns
+HackerTarget DNS | DNS | https://hackertarget.com/dns-lookup/?q={target}
+MXToolbox | DNS | https://mxtoolbox.com/SuperTool.aspx?action=dns:{target}
+DNSlytics | DNS | https://dnslytics.com/domain/{target}
+WhoisXML | DNS | https://dns-history.whoisxmlapi.com/lookup?domainName={target}
+RapidDNS | DNS | https://rapiddns.io/s/{target}
+PassiveDNS | DNS | https://passivedns.mnemonic.no/search/?query={target}
+DNSHistory | DNS | https://completedns.com/dns-history/?domain={target}
+
+# ── WHOIS & Registration ─────────────────────────────────────────
+ICANN WHOIS | WHOIS | https://lookup.icann.org/lookup?name={target}
+Who.is | WHOIS | https://who.is/whois/{target}
+DomainTools | WHOIS | https://whois.domaintools.com/{target}
+Whois.com | WHOIS | https://www.whois.com/whois/{target}
+AbuseIPDB WHOIS | WHOIS | https://www.abuseipdb.com/whois/{target}
+
+# ── Subdomain Enumeration ────────────────────────────────────────
+crt.sh | Certificates | https://crt.sh/?q=%25.{target}
+Censys | Certificates | https://search.censys.io/search?resource=hosts&q={target}
+CertSpotter | Certificates | https://sslmate.com/certspotter/api/v1/issuances?domain={target}&include_subdomains=true
+Sublist3r Online | Subdomains | https://api.sublist3r.com/search.php?domain={target}
+HackerTarget Subdomains | Subdomains | https://hackertarget.com/find-dns-host-records/?q={target}
+Riddler | Subdomains | https://riddler.io/search?q=pld:{target}
+
+# ── Threat Intelligence ──────────────────────────────────────────
+VirusTotal | Threat Intel | https://www.virustotal.com/gui/domain/{target}/relations
+AlienVault OTX | Threat Intel | https://otx.alienvault.com/indicator/domain/{target}
+ThreatCrowd | Threat Intel | https://www.threatcrowd.org/domain.php?domain={target}
+ThreatMiner | Threat Intel | https://www.threatminer.org/domain.php?q={target}
+IBM X-Force | Threat Intel | https://exchange.xforce.ibmcloud.com/url/{target}
+URLVoid | Threat Intel | https://www.urlvoid.com/scan/{target}
+URLhaus | Threat Intel | https://urlhaus.abuse.ch/browse.php?search={target}
+Pulsedive | Threat Intel | https://pulsedive.com/indicator/?ioc={target}
+Talos Intelligence | Threat Intel | https://talosintelligence.com/reputation_center/lookup?search={target}
+Cisco Umbrella | Threat Intel | https://investigate.umbrella.com/domain-view/name/{target}/view
+
+# ── Exposed Assets / Scanning ────────────────────────────────────
+Shodan | IoT/Scan | https://www.shodan.io/search?query=hostname:{target}
+Censys Hosts | IoT/Scan | https://search.censys.io/search?resource=hosts&q={target}
+ZoomEye | IoT/Scan | https://www.zoomeye.org/searchResult?q={target}
+FOFA | IoT/Scan | https://fofa.info/result?qbase64={target}
+BinaryEdge | IoT/Scan | https://app.binaryedge.io/services/query?query={target}
+GreyNoise | IoT/Scan | https://viz.greynoise.io/query/?gnql={target}
+LeakIX | Leak/Scan | https://leakix.net/domain/{target}
+Netlas | IoT/Scan | https://app.netlas.io/domains/?q={target}
+
+# ── Web Archive & History ────────────────────────────────────────
+Wayback Machine | Archive | https://web.archive.org/web/*/{target}
+CachedView | Archive | https://cachedview.nl/?url={target}
+CommonCrawl | Archive | https://index.commoncrawl.org/CC-MAIN-2024-10-index?url={target}&output=json
+TimeTravel | Archive | http://timetravel.mementoweb.org/api/json/{target}
+
+# ── Technology Detection ─────────────────────────────────────────
+BuiltWith | Tech Stack | https://builtwith.com/{target}
+Wappalyzer | CMS/Tech | https://www.wappalyzer.com/lookup/{target}
+WhatCMS | CMS Detect | https://whatcms.org/?s={target}
+SimilarTech | Tech Stack | https://www.similartech.com/websites/{target}
+PublicWWW | Source Code | https://publicwww.com/websites/{target}/
+
+# ── Email & Breach Intelligence ──────────────────────────────────
+Hunter.io | Email | https://hunter.io/search/{target}
+EmailRep | Email | https://emailrep.io/{target}
+HaveIBeenPwned | Breach | https://haveibeenpwned.com/DomainSearch?Domain={target}
+DeHashed | Breach | https://dehashed.com/search?query={target}
+IntelligenceX | Breach | https://intelx.io/?s={target}
+Pastebin Search | Paste | https://psbdmp.ws/api/search/{target}
+
+# ── Social & People Intelligence ─────────────────────────────────
+LinkedIn | Social | https://www.linkedin.com/search/results/all/?keywords={target}
+Twitter/X | Social | https://twitter.com/search?q={target}
+GitHub | Social | https://github.com/search?q={target}&type=code
+GitLab | Social | https://gitlab.com/search?search={target}
+Pastebin | Social | https://pastebin.com/search?q={target}
+
+# ── SSL / TLS ─────────────────────────────────────────────────────
+SSL Labs | SSL | https://www.ssllabs.com/ssltest/analyze.html?d={target}
+SSL Shopper | SSL | https://www.sslshopper.com/ssl-checker.html#hostname={target}
+BadSSL | SSL | https://badssl.com/dashboard/?{target}
+
+# ── Reputation & Blacklist ───────────────────────────────────────
+Google SafeBrowsing | Reputation | https://transparencyreport.google.com/safe-browsing/search?url={target}
+McAfee SiteAdvisor | Reputation | https://www.mcafee.com/en-us/secure-check-results.html#url={target}
+Sucuri SiteCheck | Reputation | https://sitecheck.sucuri.net/results/{target}
+Quttera | Reputation | https://quttera.com/detailed_report/{target}
+Web of Trust | Reputation | https://www.mywot.com/scorecard/{target}
+
+# ── Google Dorks (pre-built) ──────────────────────────────────────
+Dork-Config | Dork | https://www.google.com/search?q=site:{target}+ext:xml+OR+ext:conf+OR+ext:cnf+OR+ext:ini
+Dork-Passwords | Dork | https://www.google.com/search?q=site:{target}+ext:log+OR+ext:sql+OR+ext:bak
+Dork-AdminPanels | Dork | https://www.google.com/search?q=site:{target}+inurl:admin+OR+inurl:login+OR+inurl:dashboard
+Dork-Exposed-Docs | Dork | https://www.google.com/search?q=site:{target}+ext:pdf+OR+ext:docx+OR+ext:xlsx
+Dork-GitExposed | Dork | https://www.google.com/search?q=site:{target}+inurl:.git

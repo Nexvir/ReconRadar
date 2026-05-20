@@ -1,0 +1,262 @@
+[
+  [
+    "cloudfront.net",
+    "CloudFront",
+    "Create CloudFront distribution with matching origin"
+  ],
+  [
+    "s3.amazonaws.com",
+    "AWS S3 Bucket",
+    "Create S3 bucket with exact name"
+  ],
+  [
+    "s3-website",
+    "AWS S3 Website",
+    "Create S3 static website hosting"
+  ],
+  [
+    "elasticbeanstalk.com",
+    "AWS Elastic Beanstalk",
+    "Deploy Elastic Beanstalk app"
+  ],
+  [
+    "herokuapp.com",
+    "Heroku",
+    "Deploy Heroku app with the subdomain name"
+  ],
+  [
+    "netlify.app",
+    "Netlify",
+    "Add site in Netlify dashboard"
+  ],
+  [
+    "netlify.com",
+    "Netlify (legacy)",
+    "Add site in Netlify dashboard"
+  ],
+  [
+    "pages.dev",
+    "Cloudflare Pages",
+    "Create Cloudflare Pages project"
+  ],
+  [
+    "azureedge.net",
+    "Azure CDN",
+    "Create Azure CDN endpoint profile"
+  ],
+  [
+    "trafficmanager.net",
+    "Azure Traffic Manager",
+    "Create Azure TM profile"
+  ],
+  [
+    "azurewebsites.net",
+    "Azure App Service",
+    "Create Azure Web App"
+  ],
+  [
+    "azure-api.net",
+    "Azure API Management",
+    "Create Azure API Management instance"
+  ],
+  [
+    "cloudapp.net",
+    "Azure Cloud Services",
+    "Create Azure Cloud Service"
+  ],
+  [
+    "pantheon.io",
+    "Pantheon",
+    "Create Pantheon site"
+  ],
+  [
+    "pantheonsite.io",
+    "Pantheon (legacy)",
+    "Create Pantheon site"
+  ],
+  [
+    "github.io",
+    "GitHub Pages",
+    "Create a GitHub Pages repo with matching CNAME file"
+  ],
+  [
+    "gitlab.io",
+    "GitLab Pages",
+    "Create GitLab Pages site"
+  ],
+  [
+    "bitbucket.io",
+    "Bitbucket Cloud",
+    "Create Bitbucket Pipelines site"
+  ],
+  [
+    "firebaseapp.com",
+    "Firebase",
+    "Create Firebase project"
+  ],
+  [
+    "web.app",
+    "Firebase (web)",
+    "Create Firebase project"
+  ],
+  [
+    "vercel.app",
+    "Vercel",
+    "Deploy Vercel project"
+  ],
+  [
+    "vercel.com",
+    "Vercel (legacy)",
+    "Deploy Vercel project"
+  ],
+  [
+    "onrender.com",
+    "Render",
+    "Create Render service"
+  ],
+  [
+    "fly.dev",
+    "Fly.io",
+    "Deploy Fly.io app"
+  ],
+  [
+    "surge.sh",
+    "Surge",
+    "Deploy to Surge.sh"
+  ],
+  [
+    "myshopify.com",
+    "Shopify",
+    "Create Shopify store with that name"
+  ],
+  [
+    "shopify.com",
+    "Shopify (custom)",
+    "Create Shopify store"
+  ],
+  [
+    "zendesk.com",
+    "Zendesk",
+    "Create Zendesk subdomain"
+  ],
+  [
+    "freshdesk.com",
+    "Freshdesk",
+    "Create Freshdesk subdomain"
+  ],
+  [
+    "freshservice.com",
+    "Freshservice",
+    "Create Freshservice subdomain"
+  ],
+  [
+    "helpscout.net",
+    "Help Scout",
+    "Create Help Scout docs"
+  ],
+  [
+    "helpjuice.com",
+    "Helpjuice",
+    "Create Helpjuice KB"
+  ],
+  [
+    "ghost.io",
+    "Ghost",
+    "Create Ghost blog"
+  ],
+  [
+    "ghost.org",
+    "Ghost (self)",
+    "Create Ghost blog"
+  ],
+  [
+    "readme.io",
+    "ReadMe",
+    "Create ReadMe docs site"
+  ],
+  [
+    "readthedocs.io",
+    "Read the Docs",
+    "Create Read the Docs project"
+  ],
+  [
+    "unbouncepages.com",
+    "Unbounce",
+    "Create Unbounce landing page"
+  ],
+  [
+    "statuspage.io",
+    "Statuspage",
+    "Create Statuspage page"
+  ],
+  [
+    "atlassian.net",
+    "Atlassian",
+    "Create Jira/Confluence site"
+  ],
+  [
+    "000webhostapp.com",
+    "000WebHost",
+    "Create free hosting account"
+  ],
+  [
+    "cargo.site",
+    "Cargo",
+    "Create Cargo site"
+  ],
+  [
+    "tilda.ws",
+    "Tilda",
+    "Create Tilda site"
+  ],
+  [
+    "ucraft.net",
+    "Ucraft",
+    "Create Ucraft site"
+  ],
+  [
+    "hatchbox.io",
+    "Hatchbox",
+    "Deploy Hatchbox app"
+  ],
+  [
+    "fastly.net",
+    "Fastly",
+    "Configure Fastly service"
+  ],
+  [
+    "strikingly.com",
+    "Strikingly",
+    "Create Strikingly site"
+  ],
+  [
+    "hostingerapp.com",
+    "Hostinger",
+    "Create Hostinger site"
+  ],
+  [
+    "flywheelsites.com",
+    "Flywheel",
+    "Create Flywheel site"
+  ],
+  [
+    "kinsta.com",
+    "Kinsta",
+    "Create Kinsta site"
+  ],
+  [
+    "wpengine.com",
+    "WP Engine",
+    "Create WP Engine site"
+  ],
+  [
+    "wpenginepowered.com",
+    "WP Engine (legacy)",
+    "Create WP Engine site"
+  ],
+  [
+    "liquidweb.com",
+    "Liquid Web",
+    "Create Liquid Web site"
+  ]
+]

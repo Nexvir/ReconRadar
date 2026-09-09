@@ -1,0 +1,5 @@
+```
+# SQLite temporary files
+reconradar.db-shm
+reconradar.db-wal
+```

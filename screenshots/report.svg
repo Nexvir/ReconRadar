@@ -1,0 +1,194 @@
+<svg viewBox="0 0 1200 700" xmlns="http://www.w3.org/2000/svg" font-family="'Courier New', monospace">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#0a0e1a"/>
+      <stop offset="100%" stop-color="#060a14"/>
+    </linearGradient>
+    <linearGradient id="reportHeader" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#00ff9d" stop-opacity="0.2"/>
+      <stop offset="100%" stop-color="#00d4ff" stop-opacity="0.05"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="700" fill="url(#bg)"/>
+
+  <!-- Decorative lines -->
+  <line x1="0" y1="0" x2="0" y2="700" stroke="#00ff9d" stroke-width="3" opacity="0.4"/>
+  <line x1="1197" y1="0" x2="1197" y2="700" stroke="#00d4ff" stroke-width="3" opacity="0.4"/>
+
+  <!-- Top header -->
+  <rect width="1200" height="80" fill="url(#reportHeader)"/>
+  <rect y="80" width="1200" height="1" fill="#00ff9d" opacity="0.3"/>
+
+  <!-- Logo area -->
+  <text x="40" y="30" fill="#00ff9d" font-size="10" opacity="0.5" letter-spacing="6">◈ ◈ ◈</text>
+  <text x="40" y="58" fill="#00ff9d" font-size="26" font-weight="bold" letter-spacing="8">RECONRADAR</text>
+  <text x="260" y="58" fill="#4a5568" font-size="14">APOLLO</text>
+
+  <text x="1160" y="35" fill="#00ff9d" font-size="10" text-anchor="end" opacity="0.7">INTELLIGENCE REPORT</text>
+  <text x="1160" y="55" fill="#4a5568" font-size="11" text-anchor="end">Target: deepseek.com</text>
+  <text x="1160" y="70" fill="#2d3748" font-size="10" text-anchor="end">Generated: Wed, 20 May 2026 11:38:10 GMT</text>
+
+  <!-- Report body: two column -->
+  <!-- Left: OSINT links list -->
+  <rect x="30" y="100" width="540" height="560" rx="6" fill="#0c1220" stroke="#1a2740" stroke-width="1"/>
+  <rect x="30" y="100" width="540" height="40" rx="6" fill="#0f1929"/>
+  <rect x="30" y="100" width="4" height="560" rx="2" fill="#a855f7"/>
+  <text x="55" y="125" fill="#a855f7" font-size="13" font-weight="bold">⬡ OSINT INTELLIGENCE LINKS</text>
+  <text x="550" y="125" fill="#4a5568" font-size="10" text-anchor="end">115 sources</text>
+
+  <!-- OSINT categories -->
+  <g font-size="11">
+    <!-- Search Engines -->
+    <text x="50" y="160" fill="#4a5568" font-size="10" letter-spacing="2">SEARCH ENGINES</text>
+    <rect x="50" y="165" width="490" height="1" fill="#1e2d40"/>
+    <text x="50" y="183" fill="#00d4ff">google.com</text>
+    <text x="200" y="183" fill="#718096">site:deepseek.com</text>
+    <text x="50" y="200" fill="#00d4ff">bing.com</text>
+    <text x="200" y="200" fill="#718096">site:deepseek.com</text>
+    <text x="50" y="217" fill="#00d4ff">shodan.io</text>
+    <text x="200" y="217" fill="#718096">hostname:deepseek.com</text>
+
+    <!-- Threat Intel -->
+    <text x="50" y="244" fill="#4a5568" font-size="10" letter-spacing="2">THREAT INTELLIGENCE</text>
+    <rect x="50" y="249" width="490" height="1" fill="#1e2d40"/>
+    <text x="50" y="267" fill="#00d4ff">virustotal.com</text>
+    <text x="200" y="267" fill="#718096">Domain Report</text>
+    <text x="50" y="284" fill="#00d4ff">alienvault OTX</text>
+    <text x="200" y="284" fill="#718096">IOC Lookup</text>
+    <text x="50" y="301" fill="#00d4ff">censys.io</text>
+    <text x="200" y="301" fill="#718096">Host Search</text>
+    <text x="50" y="318" fill="#00d4ff">criminalip.io</text>
+    <text x="200" y="318" fill="#718096">Domain Threat Report</text>
+
+    <!-- Certificates -->
+    <text x="50" y="345" fill="#4a5568" font-size="10" letter-spacing="2">CERTIFICATE TRANSPARENCY</text>
+    <rect x="50" y="350" width="490" height="1" fill="#1e2d40"/>
+    <text x="50" y="368" fill="#00d4ff">crt.sh</text>
+    <text x="200" y="368" fill="#718096">SSL cert transparency</text>
+    <text x="50" y="385" fill="#00d4ff">certspotter</text>
+    <text x="200" y="385" fill="#718096">Issuance monitoring</text>
+
+    <!-- Breach Data -->
+    <text x="50" y="412" fill="#4a5568" font-size="10" letter-spacing="2">BREACH &amp; LEAK DATA</text>
+    <rect x="50" y="417" width="490" height="1" fill="#1e2d40"/>
+    <text x="50" y="435" fill="#00d4ff">haveibeenpwned.com</text>
+    <text x="200" y="435" fill="#718096">Domain breach lookup</text>
+    <text x="50" y="452" fill="#00d4ff">dehashed.com</text>
+    <text x="200" y="452" fill="#718096">Credential search</text>
+    <text x="50" y="469" fill="#00d4ff">intelx.io</text>
+    <text x="200" y="469" fill="#718096">Full breach index</text>
+
+    <!-- Google Dorks -->
+    <text x="50" y="496" fill="#4a5568" font-size="10" letter-spacing="2">GOOGLE DORKS</text>
+    <rect x="50" y="501" width="490" height="1" fill="#1e2d40"/>
+    <text x="50" y="519" fill="#f59e0b">Exposed Config Files</text>
+    <text x="220" y="519" fill="#718096">ext:xml OR ext:conf OR ext:ini</text>
+    <text x="50" y="536" fill="#f59e0b">Admin Panels</text>
+    <text x="220" y="536" fill="#718096">inurl:admin OR inurl:login</text>
+    <text x="50" y="553" fill="#f59e0b">Git Exposure</text>
+    <text x="220" y="553" fill="#718096">inurl:.git</text>
+    <text x="50" y="570" fill="#f59e0b">Password Files</text>
+    <text x="220" y="570" fill="#718096">ext:log OR ext:sql OR ext:bak</text>
+
+    <text x="50" y="618" fill="#2d3748">... and 95 more OSINT links across 12 categories</text>
+  </g>
+
+  <!-- Right: Subdomain results -->
+  <rect x="590" y="100" width="580" height="560" rx="6" fill="#0c1220" stroke="#1a2740" stroke-width="1"/>
+  <rect x="590" y="100" width="580" height="40" rx="6" fill="#0f1929"/>
+  <rect x="590" y="100" width="4" height="560" rx="2" fill="#00d4ff"/>
+  <text x="615" y="125" fill="#00d4ff" font-size="13" font-weight="bold">⬡ SUBDOMAIN ENUMERATION</text>
+  <text x="1150" y="125" fill="#4a5568" font-size="10" text-anchor="end">57 discovered</text>
+
+  <!-- Column headers -->
+  <rect x="590" y="140" width="580" height="22" fill="#090d18"/>
+  <text x="610" y="155" fill="#4a5568" font-size="10">SUBDOMAIN</text>
+  <text x="870" y="155" fill="#4a5568" font-size="10">SOURCE</text>
+  <text x="1010" y="155" fill="#4a5568" font-size="10">IP</text>
+
+  <g font-size="10.5">
+    <rect x="590" y="162" width="580" height="20" fill="#0d1728" opacity="0.6"/>
+    <text x="610" y="176" fill="#00d4ff">api.deepseek.com</text>
+    <text x="870" y="176" fill="#10b981">Active</text>
+    <text x="1010" y="176" fill="#9ca3af">3.173.21.63</text>
+
+    <text x="610" y="196" fill="#00d4ff">api-docs.deepseek.com</text>
+    <text x="870" y="196" fill="#10b981">Active</text>
+    <text x="1010" y="196" fill="#9ca3af">188.116.251.27</text>
+
+    <rect x="590" y="202" width="580" height="20" fill="#0d1728" opacity="0.6"/>
+    <text x="610" y="216" fill="#ef4444">gitlab.deepseek.com ⚠</text>
+    <text x="870" y="216" fill="#10b981">Active</text>
+    <text x="1010" y="216" fill="#ef4444">10.2.201.57</text>
+
+    <text x="610" y="236" fill="#ef4444">argocd.deepseek.com ⚠</text>
+    <text x="870" y="236" fill="#10b981">Active</text>
+    <text x="1010" y="236" fill="#ef4444">172.30.2.240</text>
+
+    <rect x="590" y="242" width="580" height="20" fill="#0d1728" opacity="0.6"/>
+    <text x="610" y="256" fill="#ef4444">confluence.deepseek.com ⚠</text>
+    <text x="870" y="256" fill="#10b981">Active</text>
+    <text x="1010" y="256" fill="#ef4444">10.2.201.57</text>
+
+    <text x="610" y="276" fill="#ef4444">grafana.deepseek.com ⚠</text>
+    <text x="870" y="276" fill="#10b981">Active</text>
+    <text x="1010" y="276" fill="#ef4444">10.2.201.57</text>
+
+    <rect x="590" y="282" width="580" height="20" fill="#0d1728" opacity="0.6"/>
+    <text x="610" y="296" fill="#f59e0b">playground.deepseek.com</text>
+    <text x="870" y="296" fill="#10b981">Active</text>
+    <text x="1010" y="296" fill="#9ca3af">10.2.201.57</text>
+
+    <text x="610" y="316" fill="#9ca3af">chat.deepseek.com</text>
+    <text x="870" y="316" fill="#10b981">Active</text>
+    <text x="1010" y="316" fill="#9ca3af">3.173.21.63</text>
+
+    <rect x="590" y="322" width="580" height="20" fill="#0d1728" opacity="0.6"/>
+    <text x="610" y="336" fill="#9ca3af">platform.deepseek.com</text>
+    <text x="870" y="336" fill="#10b981">Active</text>
+    <text x="1010" y="336" fill="#9ca3af">3.173.21.63</text>
+
+    <text x="610" y="356" fill="#9ca3af">status.deepseek.com</text>
+    <text x="870" y="356" fill="#10b981">Active</text>
+    <text x="1010" y="356" fill="#9ca3af">39.105.140.189</text>
+
+    <rect x="590" y="362" width="580" height="20" fill="#0d1728" opacity="0.6"/>
+    <text x="610" y="376" fill="#9ca3af">cdn.deepseek.com</text>
+    <text x="870" y="376" fill="#a855f7">Passive (crt.sh)</text>
+    <text x="1010" y="376" fill="#9ca3af">148.153.240.74</text>
+
+    <text x="610" y="396" fill="#9ca3af">mail.deepseek.com</text>
+    <text x="870" y="396" fill="#10b981">Active</text>
+    <text x="1010" y="396" fill="#9ca3af">45.195.18.29</text>
+
+    <rect x="590" y="402" width="580" height="20" fill="#0d1728" opacity="0.6"/>
+    <text x="610" y="416" fill="#9ca3af">download.deepseek.com</text>
+    <text x="870" y="416" fill="#10b981">Active</text>
+    <text x="1010" y="416" fill="#9ca3af">148.153.240.77</text>
+
+    <text x="610" y="436" fill="#718096">api-internal.deepseek.com</text>
+    <text x="870" y="436" fill="#10b981">Active</text>
+    <text x="1010" y="436" fill="#ef4444">172.25.1.1</text>
+
+    <rect x="590" y="442" width="580" height="20" fill="#0d1728" opacity="0.6"/>
+    <text x="610" y="456" fill="#718096">api-dev.deepseek.com</text>
+    <text x="870" y="456" fill="#10b981">Active</text>
+    <text x="1010" y="456" fill="#ef4444">172.25.1.86</text>
+
+    <text x="610" y="476" fill="#4a5568">eu.deepseek.com</text>
+    <text x="870" y="476" fill="#a855f7">Passive (crt.sh)</text>
+    <text x="1010" y="476" fill="#718096">—</text>
+
+    <text x="610" y="530" fill="#2d3748">... and 41 more subdomains discovered</text>
+  </g>
+
+  <!-- Warning badge -->
+  <rect x="610" y="560" width="540" height="80" rx="6" fill="#1a0a0a" stroke="#ef4444" stroke-width="1" opacity="0.8"/>
+  <text x="630" y="585" fill="#ef4444" font-size="12" font-weight="bold">⚠ INTERNAL ASSETS EXPOSED</text>
+  <text x="630" y="605" fill="#9ca3af" font-size="11">gitlab, argocd, confluence, grafana, playground resolving</text>
+  <text x="630" y="622" fill="#9ca3af" font-size="11">to private IP ranges (10.x.x.x / 172.x.x.x) — reachable via VPN/internal net</text>
+
+  <!-- Footer -->
+  <rect x="0" y="668" width="1200" height="32" fill="#060910"/>
+  <text x="40" y="688" fill="#1e2d40" font-size="10">github.com/Nexvir — ReconRadar APOLLO v6.0 — For authorized security testing only</text>
+</svg>

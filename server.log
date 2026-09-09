@@ -1,0 +1,47 @@
+INFO:ReconRadar.HashCracker:Hash cracker database initialized
+INFO:     Started server process [4186]
+INFO:     Waiting for application startup.
+INFO:ReconRadar:Database initialized successfully
+INFO:ReconRadar.HashCracker:Hash cracker database initialized
+INFO:ReconRadar:Hash cracker database initialized
+INFO:ReconRadar:ReconRadar APOLLO v7.0 HACKER EDITION started
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://127.0.0.1:8000 (Press CTRL+C to quit)
+
+╔═══════════════════════════════════════════════════════════════════════════╗
+║     ReconRadar APOLLO v7.0 HACKER EDITION - Ultimate Recon Framework     ║
+║                          github.com/Nexvir                                ║
+║                    Running on http://127.0.0.1:8000                       ║
+║                                                                           ║
+║  ✨ What's New in v7.0 HACKER EDITION:                                    ║
+║  ✅ SQLite/PostgreSQL database for persistent storage                     ║
+║  ✅ Hash Cracker module with MD5, SHA1, SHA256, NTLM support             ║
+║  ✅ Hacker Mode enhanced scanning                                         ║
+║  ✅ Technology fingerprinting (Wappalyzer)                                ║
+║  ✅ Screenshot capture of web services                                    ║
+║  ✅ API endpoint discovery                                                ║
+║  ✅ Cloud asset discovery (AWS, Azure, GCP)                               ║
+║  ✅ Credential leak detection                                             ║
+║  ✅ Advanced subdomain enumeration                                        ║
+║  ✅ Vulnerability correlation                                             ║
+║                                                                           ║
+║  🔧 API Endpoints:                                                        ║
+║  • POST /hash/crack      - Crack password hashes                          ║
+║  • GET  /hash/history    - View cracked hashes history                    ║
+║  • GET  /stats           - System statistics                              ║
+║  • GET  /history         - Past recon scans                               ║
+║  • WS   /ws              - Real-time scanning                             ║
+║                                                                           ║
+║  🛡️  For authorized security testing and ethical hacking only            ║
+╚═══════════════════════════════════════════════════════════════════════════╝
+    
+INFO:     127.0.0.1:51562 - "GET / HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51564 - "GET / HTTP/1.1" 200 OK
+INFO:ReconRadar.HashCracker:CRACKED: MD5 hash in 0.01s
+INFO:     127.0.0.1:51566 - "POST /hash/crack HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51568 - "GET /hash/history HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51570 - "GET /stats HTTP/1.1" 200 OK
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [4186]

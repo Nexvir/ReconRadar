@@ -1,25 +1,3 @@
 ```
-# Logs
 *.log
-
-# Python
-__pycache__/
-*.pyc
-*.pyo
-*.pyd
-.Python
-venv/
-.venv/
-.env
-.env.local
-.env.*
-
-# Backup files
-*.bak
-*.backup
-*.orig
-*.tmp
-
-# Frontend backup
-frontend_backup.py
 ```

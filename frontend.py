@@ -847,10 +847,6 @@ td.xs     { font-size: 10px; }
       <i class="fa-solid fa-eye"></i> OSINT
       <span class="tcnt" id="cnt-osint">0</span>
     </button>
-    <button class="tab-btn" id="btn-hash" onclick="switchTab('hash')" style="border-left:1px solid rgba(0,255,136,.1);margin-left:8px;">
-      <i class="fa-solid fa-key"></i> HASH CRACKER
-      <span class="tcnt" id="cnt-hash">0</span>
-    </button>
     <div class="tab-actions">
       <span id="asset-count">0&nbsp;ITEMS</span>
       <button class="btn-export" onclick="exportHtml()">
@@ -920,80 +916,6 @@ td.xs     { font-size: 10px; }
         <tr class="empty-row"><td colspan="4">Awaiting scan</td></tr>
       </tbody>
     </table>
-
-    <!-- HASH CRACKER -->
-    <div id="table-hash" style="display:none;padding:20px;">
-      <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-bottom:20px;">
-        <div style="background:rgba(0,255,136,.03);border:1px solid var(--border);padding:20px;border-radius:var(--rad);">
-          <h3 style="color:var(--g0);margin-bottom:15px;font-family:var(--head);letter-spacing:1px;">
-            <i class="fa-solid fa-key"></i> CRACK HASH
-          </h3>
-          <div style="margin-bottom:15px;">
-            <label style="color:var(--t1);font-size:11px;display:block;margin-bottom:5px;">HASH VALUE</label>
-            <input type="text" id="hash-input" placeholder="5f4dcc3b5aa765d61d8327deb882cf99" 
-                   style="width:100%;background:var(--bg1);border:1px solid var(--border);color:var(--t0);padding:10px;font-family:var(--mono);border-radius:var(--rad);">
-          </div>
-          <div style="margin-bottom:15px;">
-            <label style="color:var(--t1);font-size:11px;display:block;margin-bottom:5px;">HASH TYPE (auto-detect if empty)</label>
-            <select id="hash-type" style="width:100%;background:var(--bg1);border:1px solid var(--border);color:var(--t0);padding:10px;font-family:var(--mono);border-radius:var(--rad);">
-              <option value="">Auto-Detect</option>
-              <option value="MD5">MD5</option>
-              <option value="SHA1">SHA-1</option>
-              <option value="SHA256">SHA-256</option>
-              <option value="SHA384">SHA-384</option>
-              <option value="SHA512">SHA-512</option>
-              <option value="NTLM">NTLM</option>
-              <option value="Base64">Base64</option>
-            </select>
-          </div>
-          <div style="margin-bottom:15px;">
-            <label style="color:var(--t1);font-size:11px;display:block;margin-bottom:5px;">ATTACK METHOD</label>
-            <select id="hash-method" style="width:100%;background:var(--bg1);border:1px solid var(--border);color:var(--t0);padding:10px;font-family:var(--mono);border-radius:var(--rad);">
-              <option value="dictionary">Dictionary Attack</option>
-              <option value="rule_based">Rule-Based Attack</option>
-              <option value="brute_force">Brute Force (max 6 chars)</option>
-            </select>
-          </div>
-          <button onclick="crackHash()" style="width:100%;background:linear-gradient(135deg,var(--g0),var(--c0));border:none;color:var(--bg0);padding:12px;font-weight:bold;cursor:pointer;border-radius:var(--rad);font-family:var(--head);letter-spacing:1px;">
-            <i class="fa-solid fa-bolt"></i> START CRACKING
-          </button>
-          <div id="hash-result" style="margin-top:15px;padding:15px;background:var(--bg0);border:1px solid var(--border);display:none;">
-            <div id="hash-result-content"></div>
-          </div>
-        </div>
-        <div style="background:rgba(0,229,255,.03);border:1px solid var(--border);padding:20px;border-radius:var(--rad);">
-          <h3 style="color:var(--c0);margin-bottom:15px;font-family:var(--head);letter-spacing:1px;">
-            <i class="fa-solid fa-clock-rotate-left"></i> RECENT CRACKS
-          </h3>
-          <div id="hash-history" style="max-height:400px;overflow-y:auto;">
-            <div style="color:var(--t2);text-align:center;padding:20px;">Loading history...</div>
-          </div>
-        </div>
-      </div>
-      <div style="background:rgba(191,95,255,.03);border:1px solid var(--border);padding:20px;border-radius:var(--rad);">
-        <h3 style="color:var(--p0);margin-bottom:15px;font-family:var(--head);letter-spacing:1px;">
-          <i class="fa-solid fa-chart-bar"></i> STATISTICS
-        </h3>
-        <div id="hash-stats" style="display:grid;grid-template-columns:repeat(4,1fr);gap:15px;">
-          <div style="text-align:center;">
-            <div style="color:var(--t2);font-size:11px;">TOTAL CRACKED</div>
-            <div id="stat-total" style="color:var(--g0);font-size:24px;font-weight:bold;">0</div>
-          </div>
-          <div style="text-align:center;">
-            <div style="color:var(--t2);font-size:11px;">BY DICTIONARY</div>
-            <div id="stat-dict" style="color:var(--c0);font-size:24px;font-weight:bold;">0</div>
-          </div>
-          <div style="text-align:center;">
-            <div style="color:var(--t2);font-size:11px;">BY RULE-BASED</div>
-            <div id="stat-rule" style="color:var(--a0);font-size:24px;font-weight:bold;">0</div>
-          </div>
-          <div style="text-align:center;">
-            <div style="color:var(--t2);font-size:11px;">BY BRUTE-FORCE</div>
-            <div id="stat-brute" style="color:var(--r0);font-size:24px;font-weight:bold;">0</div>
-          </div>
-        </div>
-      </div>
-    </div>
 
   </div><!-- /tbl-wrap -->
 </div><!-- /results-col -->
@@ -1331,122 +1253,9 @@ presetSel.addEventListener('change', () => {
   customRow.style.display = presetSel.value==='CUSTOM'?'':'none';
 });
 
-/* ═══════════════════════════════════════════
-   HASH CRACKER FUNCTIONS
-═══════════════════════════════════════════ */
-
-async function crackHash() {
-  const hashInput = document.getElementById('hash-input');
-  const hashType = document.getElementById('hash-type');
-  const hashMethod = document.getElementById('hash-method');
-  const resultDiv = document.getElementById('hash-result');
-  const resultContent = document.getElementById('hash-result-content');
-  
-  const hash = hashInput.value.trim();
-  if (!hash) {
-    alert('Please enter a hash value');
-    return;
-  }
-  
-  resultDiv.style.display = 'block';
-  resultContent.innerHTML = '<div style="color:var(--a0);"><i class="fa-solid fa-spinner fa-spin"></i> Cracking...</div>';
-  
-  try {
-    const response = await fetch('/hash/crack', {
-      method: 'POST',
-      headers: {'Content-Type': 'application/json'},
-      body: JSON.stringify({
-        hash: hash,
-        type: hashType.value || '',
-        method: hashMethod.value
-      })
-    });
-    
-    const data = await response.json();
-    
-    if (data.success) {
-      resultContent.innerHTML = `
-        <div style="color:var(--g0);margin-bottom:10px;">
-          <i class="fa-solid fa-check-circle"></i> CRACKED SUCCESSFULLY!
-        </div>
-        <div style="background:var(--bg1);padding:15px;border-radius:var(--rad);border:1px solid var(--g0);">
-          <div style="color:var(--t2);font-size:11px;">HASH</div>
-          <div style="color:var(--t0);font-family:var(--mono);word-break:break-all;">${esc(data.hash)}</div>
-          <div style="color:var(--t2);font-size:11px;margin-top:10px;">TYPE: ${data.hash_type}</div>
-          <div style="color:var(--t2);font-size:11px;margin-top:10px;">PLAINTEXT</div>
-          <div style="color:var(--g0);font-size:20px;font-weight:bold;font-family:var(--mono);">${esc(data.plaintext)}</div>
-          <div style="color:var(--t2);font-size:11px;margin-top:10px;">METHOD: ${data.method}</div>
-          <div style="color:var(--t2);font-size:11px;margin-top:10px;">ATTEMPTS: ${data.stats?.total_attempted || 0}</div>
-          <div style="color:var(--t2);font-size:11px;">TIME: ${(data.stats?.time_elapsed || 0).toFixed(3)}s</div>
-        </div>
-      `;
-      loadHashHistory();
-    } else {
-      resultContent.innerHTML = `
-        <div style="color:var(--r0);margin-bottom:10px;">
-          <i class="fa-solid fa-times-circle"></i> NOT CRACKED
-        </div>
-        <div style="color:var(--t1);">${data.message || 'Failed to crack hash'}</div>
-        <div style="color:var(--t2);font-size:11px;margin-top:10px;">Attempts: ${data.stats?.total_attempted || 0}</div>
-      `;
-    }
-  } catch (error) {
-    resultContent.innerHTML = `<div style="color:var(--r0);">Error: ${error.message}</div>`;
-  }
-}
-
-async function loadHashHistory() {
-  try {
-    const response = await fetch('/hash/history?limit=20');
-    const data = await response.json();
-    
-    const historyDiv = document.getElementById('hash-history');
-    const statTotal = document.getElementById('stat-total');
-    const statDict = document.getElementById('stat-dict');
-    const statRule = document.getElementById('stat-rule');
-    const statBrute = document.getElementById('stat-brute');
-    
-    if (data.hashes && data.hashes.length > 0) {
-      let html = '';
-      data.hashes.forEach(h => {
-        html += `
-          <div style="background:var(--bg1);padding:10px;margin-bottom:8px;border-radius:var(--rad);border-left:3px solid ${h.method==='dictionary'? 'var(--c0)' : h.method==='rule_based'? 'var(--a0)' : 'var(--r0)'};">
-            <div style="display:flex;justify-content:space-between;align-items:center;">
-              <div style="color:var(--g0);font-family:var(--mono);font-size:11px;">${esc(h.plaintext)}</div>
-              <div style="color:var(--t2);font-size:9px;">${h.hash_type}</div>
-            </div>
-            <div style="color:var(--t2);font-size:9px;margin-top:5px;">${h.hash_value}</div>
-            <div style="color:var(--t3);font-size:9px;margin-top:5px;">${h.method} • ${new Date(h.crack_time).toLocaleString()}</div>
-          </div>
-        `;
-      });
-      historyDiv.innerHTML = html;
-      
-      // Update stats
-      statTotal.textContent = data.statistics?.total_cracked || 0;
-      statDict.textContent = data.statistics?.by_method?.dictionary || 0;
-      statRule.textContent = data.statistics?.by_method?.rule_based || 0;
-      statBrute.textContent = data.statistics?.by_method?.brute_force || 0;
-    } else {
-      historyDiv.innerHTML = '<div style="color:var(--t2);text-align:center;padding:20px;">No cracked hashes yet</div>';
-      statTotal.textContent = '0';
-      statDict.textContent = '0';
-      statRule.textContent = '0';
-      statBrute.textContent = '0';
-    }
-  } catch (error) {
-    console.error('Error loading hash history:', error);
-  }
-}
-
-// Load hash history on page load
-setTimeout(() => loadHashHistory(), 1000);
-
 /* ── boot ── */
 connectWS();
 window.switchTab=switchTab;
-window.crackHash=crackHash;
-window.loadHashHistory=loadHashHistory;
 </script>
 </body>
 </html>

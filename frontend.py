@@ -517,6 +517,27 @@ select.input-field {
   box-shadow: none;
 }
 
+
+.btn-scan {
+  width: 100%;
+  padding: 14px 20px;
+  font-size: 15px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  transition: all 0.3s ease;
+}
+
+.btn-scan:hover:not(:disabled) {
+  transform: translateY(-2px) scale(1.02);
+  box-shadow: 0 8px 25px var(--accent-glow);
+}
+
+.btn-scan.scanning {
+  background: linear-gradient(135deg, #ef4444, #dc2626);
+  box-shadow: 0 4px 14px rgba(239, 68, 68, 0.4);
+}
+
 .btn-danger {
   padding: 12px 16px;
   background: rgba(244, 63, 94, 0.08);
@@ -1161,6 +1182,10 @@ select.input-field {
           <input type="text" id="api-key" class="input-field" placeholder="API Key (optional)">
           <i class="fas fa-key input-icon"></i>
         </div>
+
+        <button class="btn btn-primary btn-scan" id="scan-btn" style="width: 100%; margin-top: 12px;">
+          <i class="fas fa-play"></i> Start Scan
+        </button>
       </div>
       
       <!-- Modules -->
@@ -1406,6 +1431,17 @@ select.input-field {
       els.exportBtn.addEventListener('click', exportLogs);
     }
     
+    // Scan button
+    if (els.scanBtn) {
+      els.scanBtn.addEventListener('click', () => {
+        if (!isScanning) {
+          startScan();
+        } else {
+          stopScan();
+        }
+      });
+    }
+
     // Enter key on target input
     if (els.targetInput) {
       els.targetInput.addEventListener('keypress', (e) => {

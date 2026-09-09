@@ -1197,3 +1197,4 @@
 2026-05-20 15:02:12,979 [INFO] httpx: HTTP Request: GET https://deepseek.com/metrics/ "HTTP/1.1 404 Not Found"
 2026-05-20 15:02:12,992 [INFO] httpx: HTTP Request: GET https://deepseek.com/metrics/json "HTTP/1.1 404 Not Found"
 2026-05-20 15:02:13,259 [INFO] ReconRadar: Saved HTML report: reports\1779276261578.html (219 findings)
+2026-09-09 16:51:53,462 [INFO] ReconRadar: ReconRadar APOLLO v6.0 started — storage initialised in data/ and reports/

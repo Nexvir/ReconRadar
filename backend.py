@@ -1,12 +1,14 @@
 """
-ReconRadar APOLLO v6.0 - Backend
-----------------------------------
+ReconRadar APOLLO v7.0 HACKER EDITION - Backend
+------------------------------------------------
 GitHub : https://github.com/Nexvir
 Run    : python backend.py
 
 What's in this file:
   • All imports + RotatingFileHandler logging (reconradar.log)
-  • JSON-based persistence (data/wordlist.json, data/signatures.json)
+  • Database integration (SQLite/PostgreSQL via SQLAlchemy)
+  • Hash cracker module integration
+  • Hacker mode enhanced scanning
   • HTML report per scan saved to reports/{scan_id}.html
   • In-memory DNS cache (TTL 300 s) and WHOIS cache (TTL 24 h)
   • ConnectionManager with per-scan result buffering
@@ -16,10 +18,13 @@ What's in this file:
   • REST endpoints:
       GET  /history               – list of past scan reports
       GET  /history/{scan_id}     – open the HTML report for one scan
+      POST /hash/crack            – crack a hash
+      GET  /hash/history          – get cracked hashes history
+      GET  /stats                 – system statistics
   • HTML_TEMPLATE imported from frontend.py
 
 Dependencies:
-  pip install fastapi uvicorn python-nmap dnspython python-whois httpx
+  pip install fastapi uvicorn python-nmap dnspython python-whois httpx sqlalchemy
   System: Nmap must be installed. Root/Admin for -sS / -O / -f scans.
 """
 
@@ -94,6 +99,35 @@ logger = logging.getLogger("ReconRadar")
 # ── Frontend template ────────────────────────────────────────────────────────
 
 from frontend import HTML_TEMPLATE
+
+# ── Database & Hash Cracker integration ─────────────────────────────────────
+
+try:
+    from database import (
+        init_db, create_scan, update_scan_status, add_finding,
+        get_statistics as get_db_statistics
+    )
+    DB_AVAILABLE = True
+except ImportError:
+    DB_AVAILABLE = False
+    logger.warning("Database module not available")
+
+try:
+    from hash_cracker import (
+        HashCracker, detect_hash_type, get_cracked_hashes,
+        get_hash_statistics, init_hash_cracker_db
+    )
+    HASH_CRACKER_AVAILABLE = True
+except ImportError:
+    HASH_CRACKER_AVAILABLE = False
+    logger.warning("Hash cracker module not available")
+
+try:
+    from hacker_enhanced import hacker_mode_scan, tech_stack_fingerprint
+    HACKER_MODE_AVAILABLE = True
+except ImportError:
+    HACKER_MODE_AVAILABLE = False
+    logger.warning("Hacker enhanced module not available")
 
 # ═══════════════════════════════════════════════════════════════════════════
 # STORAGE PATHS
@@ -1607,32 +1641,184 @@ async def get_scan_report(scan_id: str):
 
 @app.on_event("startup")
 async def startup_event():
+    """Initialize all components on startup"""
     await asyncio.to_thread(init_storage)
-    logger.info("ReconRadar APOLLO v6.0 started — storage initialised in data/ and reports/")
+    
+    # Initialize database if available
+    if DB_AVAILABLE:
+        try:
+            init_db()
+            logger.info("Database initialized successfully")
+        except Exception as e:
+            logger.error(f"Database initialization error: {e}")
+    
+    # Initialize hash cracker database if available
+    if HASH_CRACKER_AVAILABLE:
+        try:
+            init_hash_cracker_db()
+            logger.info("Hash cracker database initialized")
+        except Exception as e:
+            logger.error(f"Hash cracker DB initialization error: {e}")
+    
+    logger.info("ReconRadar APOLLO v7.0 HACKER EDITION started")
+
+
+# ═══════════════════════════════════════════════════════════════════════════
+# HASH CRACKING ENDPOINTS
+# ═══════════════════════════════════════════════════════════════════════════
+
+@app.post("/hash/crack")
+async def crack_hash_endpoint(payload: dict):
+    """
+    Crack a password hash
+    Payload: {"hash": "5f4dcc3b5aa765d61d8327deb882cf99", "type": "MD5"}
+    """
+    if not HASH_CRACKER_AVAILABLE:
+        return JSONResponse(
+            status_code=503,
+            content={"error": "Hash cracker module not available"}
+        )
+    
+    hash_value = payload.get("hash", "")
+    hash_type = payload.get("type", "")
+    method = payload.get("method", "dictionary")  # dictionary, brute_force, rule_based
+    
+    if not hash_value:
+        raise HTTPException(status_code=400, detail="Hash value required")
+    
+    # Auto-detect hash type if not provided
+    if not hash_type:
+        hash_type = detect_hash_type(hash_value)
+        if not hash_type:
+            raise HTTPException(
+                status_code=400,
+                detail="Unable to detect hash type. Please specify it manually."
+            )
+    
+    cracker = HashCracker()
+    
+    # Select cracking method
+    if method == "brute_force":
+        result = await asyncio.to_thread(
+            cracker.crack_brute_force,
+            hash_value, hash_type,
+            max_length=payload.get("max_length", 6)
+        )
+    elif method == "rule_based":
+        result = await asyncio.to_thread(
+            cracker.crack_rule_based,
+            hash_value, hash_type
+        )
+    else:  # dictionary
+        result = await asyncio.to_thread(
+            cracker.crack_with_wordlist,
+            hash_value, hash_type,
+            use_mutations=payload.get("use_mutations", True)
+        )
+    
+    if result:
+        return JSONResponse(content={
+            "success": True,
+            "hash": hash_value[:20] + "...",
+            "hash_type": hash_type,
+            "plaintext": result,
+            "method": method,
+            "stats": cracker.get_stats()
+        })
+    else:
+        return JSONResponse(content={
+            "success": False,
+            "hash": hash_value[:20] + "...",
+            "hash_type": hash_type,
+            "message": "Hash not cracked with current wordlist/method",
+            "stats": cracker.get_stats()
+        })
+
+
+@app.get("/hash/history")
+async def get_hash_history(limit: int = 50, offset: int = 0):
+    """Get history of cracked hashes"""
+    if not HASH_CRACKER_AVAILABLE:
+        return JSONResponse(
+            status_code=503,
+            content={"error": "Hash cracker module not available"}
+        )
+    
+    hashes = await asyncio.to_thread(get_cracked_hashes, limit, offset)
+    stats = await asyncio.to_thread(get_hash_statistics)
+    
+    return JSONResponse(content={
+        "hashes": hashes,
+        "statistics": stats,
+        "total": len(hashes)
+    })
+
+
+@app.get("/stats")
+async def get_system_stats():
+    """Get overall system statistics"""
+    stats = {
+        "recon_scans": {},
+        "hash_cracking": {},
+        "system": {
+            "db_available": DB_AVAILABLE,
+            "hash_cracker_available": HASH_CRACKER_AVAILABLE,
+            "hacker_mode_available": HACKER_MODE_AVAILABLE
+        }
+    }
+    
+    if DB_AVAILABLE:
+        try:
+            recon_stats = await asyncio.to_thread(get_db_statistics)
+            stats["recon_scans"] = recon_stats
+        except Exception as e:
+            stats["recon_scans"]["error"] = str(e)
+    
+    if HASH_CRACKER_AVAILABLE:
+        try:
+            hash_stats = await asyncio.to_thread(get_hash_statistics)
+            stats["hash_cracking"] = hash_stats
+        except Exception as e:
+            stats["hash_cracking"]["error"] = str(e)
+    
+    return JSONResponse(content=stats)
 
 
 if __name__ == "__main__":
     init_storage()
+    
+    # Initialize databases
+    if DB_AVAILABLE:
+        init_db()
+    if HASH_CRACKER_AVAILABLE:
+        init_hash_cracker_db()
+    
     print("""
 ╔═══════════════════════════════════════════════════════════════════════════╗
-║         ReconRadar APOLLO v6.0 - Ultimate Reconnaissance Framework       ║
+║     ReconRadar APOLLO v7.0 HACKER EDITION - Ultimate Recon Framework     ║
 ║                          github.com/Nexvir                                ║
-║     Running on http://127.0.0.1:8000                                     ║
+║                    Running on http://127.0.0.1:8000                       ║
 ║                                                                           ║
-║  ✨ What's New in v6.0:                                                   ║
-║  ✅ SQLite removed — each scan saved as standalone HTML report            ║
-║  ✅ reports/{scan_id}.html — fully styled HTML per scan                   ║
-║  ✅ data/wordlist.json  — editable brute-force wordlist                   ║
-║  ✅ data/signatures.json — editable takeover signatures                   ║
-║  ✅ GET /history  — list all past scans (from reports/index.json)         ║
-║  ✅ GET /history/{scan_id} — open full HTML report in browser             ║
-║  ✅ OSINT expanded to 35+ sources (Shodan, Netlas, FullHunt,              ║
-║     LeakIX, Criminal IP, GreyNoise, OTX, Pulsedive, GitHub, ...)         ║
-║  ✅ DNS cache (5 min TTL) + WHOIS cache (24 h TTL)                        ║
-║  ✅ RotatingFileHandler logging → reconradar.log                          ║
-║  ✅ No dependencies on SQLite — zero DB setup required                    ║
+║  ✨ What's New in v7.0 HACKER EDITION:                                    ║
+║  ✅ SQLite/PostgreSQL database for persistent storage                     ║
+║  ✅ Hash Cracker module with MD5, SHA1, SHA256, NTLM support             ║
+║  ✅ Hacker Mode enhanced scanning                                         ║
+║  ✅ Technology fingerprinting (Wappalyzer)                                ║
+║  ✅ Screenshot capture of web services                                    ║
+║  ✅ API endpoint discovery                                                ║
+║  ✅ Cloud asset discovery (AWS, Azure, GCP)                               ║
+║  ✅ Credential leak detection                                             ║
+║  ✅ Advanced subdomain enumeration                                        ║
+║  ✅ Vulnerability correlation                                             ║
 ║                                                                           ║
-║  🛡️  For authorized security testing only                                 ║
+║  🔧 API Endpoints:                                                        ║
+║  • POST /hash/crack      - Crack password hashes                          ║
+║  • GET  /hash/history    - View cracked hashes history                    ║
+║  • GET  /stats           - System statistics                              ║
+║  • GET  /history         - Past recon scans                               ║
+║  • WS   /ws              - Real-time scanning                             ║
+║                                                                           ║
+║  🛡️  For authorized security testing and ethical hacking only            ║
 ╚═══════════════════════════════════════════════════════════════════════════╝
     """)
     uvicorn.run(app, host="127.0.0.1", port=8000, log_level="info")

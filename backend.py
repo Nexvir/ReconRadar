@@ -1591,10 +1591,21 @@ async def ws_endpoint(ws: WebSocket):
                 if action == "start_scan":
                     target    = payload.get("target", "").strip()
                     nmap_args = payload.get("nmap_args") or payload.get("args", "-sV -T4 -F -n")
-                    modules   = payload.get("modules", {
-                        "dns": True, "whois": True, "subdomain": True,
-                        "takeover": True, "web": True, "dnszone": True, "osint": True,
-                    })
+                    
+                    # Convert modules from list (frontend) to dict (backend expects)
+                    modules_raw = payload.get("modules", None)
+                    if isinstance(modules_raw, list):
+                        # Frontend sends ['dns', 'whois', ...] - convert to {'dns': True, 'whois': True, ...}
+                        modules = {m: True for m in modules_raw}
+                    elif isinstance(modules_raw, dict):
+                        modules = modules_raw
+                    else:
+                        # Default modules if none provided
+                        modules = {
+                            "dns": True, "whois": True, "subdomain": True,
+                            "takeover": True, "web": True, "dnszone": True, "osint": True,
+                        }
+                    
                     scan_id = payload.get("scan_id", str(time.time()))
                     if target:
                         current_scan_id = scan_id

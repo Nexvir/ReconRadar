@@ -1198,3 +1198,21 @@
 2026-05-20 15:02:12,992 [INFO] httpx: HTTP Request: GET https://deepseek.com/metrics/json "HTTP/1.1 404 Not Found"
 2026-05-20 15:02:13,259 [INFO] ReconRadar: Saved HTML report: reports\1779276261578.html (219 findings)
 2026-09-09 16:51:53,462 [INFO] ReconRadar: ReconRadar APOLLO v6.0 started — storage initialised in data/ and reports/
+2026-09-09 18:49:04,703 [WARNING] ReconRadar: Database module not available
+2026-09-09 18:49:04,708 [WARNING] ReconRadar: Hash cracker module not available
+2026-09-09 18:49:04,714 [WARNING] ReconRadar: Hacker enhanced module not available
+2026-09-09 18:49:04,739 [INFO] ReconRadar: ReconRadar APOLLO v7.0 HACKER EDITION started
+2026-09-09 18:50:48,994 [WARNING] ReconRadar: Database module not available
+2026-09-09 18:50:48,994 [WARNING] ReconRadar: Hash cracker module not available
+2026-09-09 18:50:48,995 [WARNING] ReconRadar: Hacker enhanced module not available
+2026-09-09 18:50:55,139 [WARNING] ReconRadar: Database module not available
+2026-09-09 18:50:55,140 [WARNING] ReconRadar: Hash cracker module not available
+2026-09-09 18:50:55,140 [WARNING] ReconRadar: Hacker enhanced module not available
+2026-09-09 18:50:55,161 [INFO] ReconRadar: ReconRadar APOLLO v7.0 HACKER EDITION started
+2026-09-09 18:55:36,825 [WARNING] ReconRadar: Database module not available
+2026-09-09 18:55:36,826 [WARNING] ReconRadar: Hash cracker module not available
+2026-09-09 18:55:36,827 [WARNING] ReconRadar: Hacker enhanced module not available
+2026-09-09 18:55:36,851 [INFO] ReconRadar: ReconRadar APOLLO v7.0 HACKER EDITION started
+2026-09-09 18:57:06,043 [WARNING] ReconRadar: Database module not available
+2026-09-09 18:57:06,044 [WARNING] ReconRadar: Hash cracker module not available
+2026-09-09 18:57:06,045 [WARNING] ReconRadar: Hacker enhanced module not available

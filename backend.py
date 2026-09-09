@@ -1585,9 +1585,12 @@ async def ws_endpoint(ws: WebSocket):
             raw = await ws.receive_text()
             try:
                 payload = json.loads(raw)
-                if payload.get("action") == "start_scan":
+                # Support both "action" and "type" keys for compatibility
+                action = payload.get("action") or payload.get("type")
+                
+                if action == "start_scan":
                     target    = payload.get("target", "").strip()
-                    nmap_args = payload.get("nmap_args", "-sV -T4 -F -n")
+                    nmap_args = payload.get("nmap_args") or payload.get("args", "-sV -T4 -F -n")
                     modules   = payload.get("modules", {
                         "dns": True, "whois": True, "subdomain": True,
                         "takeover": True, "web": True, "dnszone": True, "osint": True,
@@ -1599,12 +1602,51 @@ async def ws_endpoint(ws: WebSocket):
                             perform_recon(target, nmap_args, ws, modules, scan_id)
                         )
                         manager.scan_tasks[scan_id] = current_task
-                elif payload.get("action") == "stop_scan":
+                elif action == "stop_scan":
                     sid = payload.get("scan_id")
                     if sid and sid in manager.scan_tasks:
                         manager.scan_tasks[sid].cancel()
                         del manager.scan_tasks[sid]
                         await manager.log(ws, "[SYSTEM] Stop command received. Terminating scan...")
+                elif action == "crack_hash":
+                    # Handle hash cracking via WebSocket
+                    if HASH_CRACKER_AVAILABLE:
+                        hash_value = payload.get("hash", "")
+                        hash_type = payload.get("hash_type") or payload.get("type", "")
+                        
+                        if hash_value:
+                            await manager.log(ws, f"[HASH] Cracking hash: {hash_value[:20]}...")
+                            
+                            # Auto-detect hash type if not provided
+                            if not hash_type:
+                                hash_type = detect_hash_type(hash_value)
+                                if hash_type:
+                                    await manager.log(ws, f"[HASH] Detected type: {hash_type}")
+                                else:
+                                    await manager.log(ws, "[HASH] Unable to detect hash type", "warning")
+                                    continue
+                            
+                            cracker = HashCracker()
+                            result = await asyncio.to_thread(
+                                cracker.crack_with_wordlist,
+                                hash_value, hash_type,
+                                use_mutations=True
+                            )
+                            
+                            if result:
+                                await manager.result(
+                                    ws, hash_value[:20] + "...", hash_type, 
+                                    f"✓ PLAINTEXT: {result}", "Success", "hash_cracker"
+                                )
+                                await manager.log(ws, f"[HASH] Successfully cracked! Plaintext: {result}", "success")
+                            else:
+                                await manager.result(
+                                    ws, hash_value[:20] + "...", hash_type,
+                                    "✗ Not cracked with current wordlist", "Warning", "hash_cracker"
+                                )
+                                await manager.log(ws, "[HASH] Hash not cracked with current wordlist", "warning")
+                    else:
+                        await manager.log(ws, "[HASH] Hash cracker module not available", "error")
             except json.JSONDecodeError:
                 pass
     except WebSocketDisconnect:
@@ -1795,13 +1837,19 @@ if __name__ == "__main__":
     
     print("""
 ╔═══════════════════════════════════════════════════════════════════════════╗
-║     ReconRadar APOLLO v7.0 HACKER EDITION - Ultimate Recon Framework     ║
+║     ReconRadar QUANTUM v8.0 - Ultimate Recon Framework                  ║
 ║                          github.com/Nexvir                                ║
 ║                    Running on http://127.0.0.1:8000                       ║
 ║                                                                           ║
-║  ✨ What's New in v7.0 HACKER EDITION:                                    ║
+║  ✨ What's New in v8.0 QUANTUM EDITION:                                   ║
+║  ✅ Glassmorphism Enterprise UI with Navy & Coral theme                  ║
+║  ✅ Responsive design for mobile, tablet, and desktop                    ║
+║  ✅ Smooth animations (60 FPS) and modern interactions                   ║
+║  ✅ WCAG-compliant accessibility features                                ║
 ║  ✅ SQLite/PostgreSQL database for persistent storage                     ║
 ║  ✅ Hash Cracker module with MD5, SHA1, SHA256, NTLM support             ║
+║  ✅ WebSocket hash cracking (real-time feedback)                         ║
+║  ✅ REST API for hash cracking (/hash/crack)                             ║
 ║  ✅ Hacker Mode enhanced scanning                                         ║
 ║  ✅ Technology fingerprinting (Wappalyzer)                                ║
 ║  ✅ Screenshot capture of web services                                    ║
@@ -1812,11 +1860,19 @@ if __name__ == "__main__":
 ║  ✅ Vulnerability correlation                                             ║
 ║                                                                           ║
 ║  🔧 API Endpoints:                                                        ║
-║  • POST /hash/crack      - Crack password hashes                          ║
-║  • GET  /hash/history    - View cracked hashes history                    ║
-║  • GET  /stats           - System statistics                              ║
-║  • GET  /history         - Past recon scans                               ║
-║  • WS   /ws              - Real-time scanning                             ║
+║  • POST /hash/crack      - Crack password hashes (REST)                  ║
+║  • GET  /hash/history    - View cracked hashes history                   ║
+║  • GET  /stats           - System statistics                             ║
+║  • GET  /history         - Past recon scans                              ║
+║  • WS   /ws              - Real-time scanning & hash cracking            ║
+║                                                                           ║
+║  🎨 Frontend Features:                                                    ║
+║  • Glassmorphism design with backdrop blur effects                       ║
+║  • Real-time terminal with color-coded logs                              ║
+║  • Interactive result cards with severity badges                         ║
+║  • Hash cracker panel with auto-detection                                ║
+║  • Export functionality for logs and results                             ║
+║  • Connection status indicator and scan timer                            ║
 ║                                                                           ║
 ║  🛡️  For authorized security testing and ethical hacking only            ║
 ╚═══════════════════════════════════════════════════════════════════════════╝

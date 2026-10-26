@@ -537,12 +537,18 @@ This project is licensed under the **MIT License** — see [LICENSE](LICENSE) fo
 
 ---
 
+---
+
 <div align="center">
 
-Made with ⚡ by [**primlagic**](primlagic.ir)
+**Developed by [PrimLagic](https://primlagic.ir) — Software Development, AI & Cybersecurity**
 
-*ReconRadar APOLLO v7.0 HACKER EDITION*
+Building practical technology solutions, software products, and intelligent digital experiences.
 
-*Star ⭐ the repo if you find it useful!*
+[Official Website](https://primlagic.ir) · [GitHub Organization](https://github.com/Nexvir)
+
+*ReconRadar APOLLO v7.0 — Open-Source Security Research Tool*
+
+If you find this project useful, consider giving it a ⭐ star.
 
 </div>

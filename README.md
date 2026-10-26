@@ -539,7 +539,7 @@ This project is licensed under the **MIT License** — see [LICENSE](LICENSE) fo
 
 <div align="center">
 
-Made with ⚡ by [**Nexvir**](https://github.com/Nexvir)
+Made with ⚡ by [**primlagic**](primlagic.ir)
 
 *ReconRadar APOLLO v7.0 HACKER EDITION*
 
